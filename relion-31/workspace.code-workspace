@@ -1,0 +1,51 @@
+{
+	"folders": [
+		{
+			"path": "relion"
+		}
+	],
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+
+			{
+				"name": "(gdb) Launch",
+				"type": "cppdbg",
+				"request": "launch",
+				"program": "${workspaceFolder}/build/bin/relion_import",
+				"args": [ "-f", "file"],
+				"stopAtEntry": false,
+				"cwd": "${workspaceFolder}",
+				"environment": [],
+				"externalConsole": false,
+				"MIMode": "gdb",
+				"setupCommands": [
+					{
+						"description": "Enable pretty-printing for gdb",
+						"text": "-enable-pretty-printing",
+						"ignoreFailures": true
+					}
+				]
+			},
+			{
+				"name": "(gdb) Launch 1 particle",
+				"type": "cppdbg",
+				"request": "launch",
+				"program": "${workspaceFolder}/build/bin/relion_refine",
+				"args": ["--o", "${workspaceFolder}/../1particletest/Class3D/job001/run", "--i", "${workspaceFolder}/../1particletest/1particle.star","--ref", "${workspaceFolder}/../1particletest/run_class001.mrc", "--firstiter_cc", "--ini_high 20", "--dont_combine_weights_via_disc", "--pad", "2", "--ctf", "--ctf_intact_first_peak", "--iter", "25", "--tau2_fudge", "4", "--particle_diameter", "220", "--K", "1", "--flatten_solvent", "--zero_mask", "--oversampling", "1", "--healpix_order", "2", "--sigma_ang", "1.66667", "--offset_range", "5", "--offset_step", "2", "--sym", "C1", "--norm", "--scale",  "--cpu", "--j", "1"],
+				"stopAtEntry": false,
+				"cwd": "${workspaceFolder}/../1particletest/",
+				"environment": [],
+				"externalConsole": false,
+				"MIMode": "gdb",
+				"setupCommands": [
+					{
+						"description": "`which relion_refine_mpi` --o Class3D/job117/run --i Refine3D/job081/run_data.star --ref Refine3D/job081/run_class001.mrc --firstiter_cc --ini_high 20 --dont_combine_weights_via_disc --pool 20 --pad 2  --ctf --ctf_intact_first_peak --iter 25 --tau2_fudge 4 --particle_diameter 220 --K 3 --flatten_solvent --zero_mask --oversampling 1 --healpix_order 2 --sigma_ang 1.66667 --offset_range 5 --offset_step 2 --sym C5 --norm --scale  --j 8 --gpu ",
+						"text": "-enable-pretty-printing",
+						"ignoreFailures": true
+					}
+				]
+			}
+		]
+	}
+}
